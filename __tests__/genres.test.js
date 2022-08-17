@@ -86,4 +86,16 @@ describe('genres routes', () => {
       updatedAt: expect.any(String),
     });
   });
+
+  it('#GET /api/v1/genres/:id should return a genre with movies', async () => {
+    const resp = await request(app).get('/api/v1/genres/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(Number),
+      name: expect.any(String),
+      createdAt: expect.any(String),
+      updatedAt: expect.any(String),
+      Movies: expect.any(Array)
+    });
+  });
 });
